@@ -8,14 +8,14 @@ const PORT = process.env.PORT || 3001;
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-// redirecting to https (production only):
-app.use('/', httpsRedirect());
-
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+// redirecting to https (production only):
+app.use('/', httpsRedirect());
+
 // Add routes, both API and view
 app.use(routes);
 

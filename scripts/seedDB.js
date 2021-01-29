@@ -172,35 +172,64 @@ const userSeed = [
      "password": "123456"
   }
 ];
+const mindSeed = [
+  {  date: '123415',
+     mood: 'tired',
+     reflection: 'All difficult things have their origin in that which is easy, and great things in that which is small. - Lao-Tzu',
+     email: 'jg@evolve.us'
+  },
+  {  date: '123415',
+     mood: 'really tired',
+     reflection: 'If you have knowledge, let others light their candles in it. - Margaret Fuller',
+     email: 'jg@evolve.us'
+  },
+  {  date: '123415',
+  mood: 'so tired',
+  reflection: 'Accept the things to which fate binds you, and love the people with whom fate brings you together, but do so with all your heart. - Marcus Aurelius',
+  email: 'jg@evolve.us'
+}
+];
 
 
-db.Health
-  .remove({})
-  .then(() => db.Health.collection.insertMany(healthSeed))
-  .then(data => {
-    console.log(data.result.n + " Health records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+// db.Health
+//   .remove({})
+//   .then(() => db.Health.collection.insertMany(healthSeed))
+//   .then(data => {
+//     console.log(data.result.n + " Health records inserted!");
+//     process.exit(0);
+//   })
+//   .catch(err => {
+//     console.error(err);
+//     process.exit(1);
+//   });
 
-  db.Exercise
-  .remove({})
-  .then(() => db.Exercise.collection.insertMany(exerciseSeed))
-  .then(data => {
-    console.log(data.result.n + " Exercise records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
-
+//   db.Exercise
+//   .remove({})
+//   .then(() => db.Exercise.collection.insertMany(exerciseSeed))
+//   .then(data => {
+//     console.log(data.result.n + " Exercise records inserted!");
+//     process.exit(0);
+//   })
+//   .catch(err => {
+//     console.error(err);
+//     process.exit(1);
+//   });
+/* 
   db.User
   .remove({})
   .then(() => db.User.collection.insertMany(userSeed))
+  .then(data => {
+    console.log(data.result.n + " User records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  }); */
+
+  db.Mind
+  .remove({})
+  .then(() => db.Mind.collection.insertMany(mindSeed))
   .then(data => {
     console.log(data.result.n + " User records inserted!");
     process.exit(0);

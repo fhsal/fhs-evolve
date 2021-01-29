@@ -11,8 +11,18 @@ class LoginForm extends Component {
     state = {
         loggedIn: false,
         email: "",
-        password: ""
+        password: "",
+        loginDate: "",
+        userName:''
     }
+
+maskPassword = event =>{
+
+    // let date = new Date().toJSON().substring(0, 10)
+
+
+}
+
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -31,6 +41,10 @@ class LoginForm extends Component {
         console.log('email: ' + this.state.email);
         console.log('password: ' +this.state.password);
         console.log('logged in status: ' + this.state.loggedIn);
+        let date = new Date().toJSON().substring(0, 10);
+        this.setState({loginDate: date})
+        console.log('Login date: ' + date)
+        console.log('Login date: ' + this.state.loginDate)
         let key = this.state.email + this.state.password;
         console.log('Key: ' + key)
         this.setState({
@@ -44,8 +58,12 @@ axios.get('/api/user/'+ this.state.email)
             this.setState({loggedIn: true})
             console.log('Display name: ' + response.data.displayName)
             sessionStorage.setItem('loginStatus', this.state.loggedIn)
-            sessionStorage.setItem('user', response.data.displayName)
+            sessionStorage.setItem('displayName', response.data.displayName)
             sessionStorage.setItem('email', response.data.email)
+            sessionStorage.setItem('fullName', response.data.name)  
+            sessionStorage.setItem('enrollDate', response.data.enrollDate) 
+            console.log('UserID: ' + response.data.userID) 
+            console.log('Enroll Date: ' + response.data.enrollDate)         
             console.log('successful signup')
             console.log('logged in status: ' + this.state.loggedIn)
             alert('Welcome to Evolve !')

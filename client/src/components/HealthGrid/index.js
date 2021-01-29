@@ -10,6 +10,7 @@ import { Button } from 'react-bootstrap';
 import { ButtonGroup } from 'react-bootstrap';
 import Col from "../Col";
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -107,7 +108,7 @@ componentDidMount() {
     }
 
 getData = () =>{
-  fetch('/api/health/' + this.state.yearWeek, {
+  fetch('/api/health/key/' + sessionStorage.email + this.state.yearWeek, {
     headers : { 
       'Content-Type': 'application/json',
       'Accept': 'application/json'
@@ -143,7 +144,7 @@ this.getData()
 }
 
 eraseWeek = () =>{
-  fetch('/api/health/' + this.state.yearWeek, {
+  fetch('/api/health/key/' + sessionStorage.email + this.state.yearWeek, {
     method: 'DELETE',
   })
     .then(result => result.text())
@@ -167,7 +168,7 @@ clearGrid = () => {
 }
 
 replaceWeek = (gridData) =>{
-  console.log(this.state.saveFlag)
+
   if (!this.state.saveFlag) { this.saveWeek(gridData)
   }
   else {
@@ -179,15 +180,13 @@ replaceWeek = (gridData) =>{
   onReplaceButtonClick = () => {
     this.gridApi.selectAll();
     const selectedUpdateNodes = this.gridApi.getSelectedNodes();
-    console.log(selectedUpdateNodes)
     const selectedUpdateData = selectedUpdateNodes.map(node => node.data);
-    console.log(selectedUpdateData);
     let email = sessionStorage.email;
-    console.log('email: ' + email)
     let gridSave = `[{"yearWeek": "${this.state.yearWeek}", "key": "${email + this.state.yearWeek}", "userID": "Bob", "healthData": ${JSON.stringify(selectedUpdateData)}}]`;
     console.log(gridSave);
-
     this.setState({gridData: gridSave})
+
+  
 
     
 
@@ -201,9 +200,15 @@ replaceWeek = (gridData) =>{
 pickerHandler= (date)=> {
   console.log(date)
   let pickedDate = new Date(date).toJSON().substring(0, 4) + "-" + getWeek(date)
-  console.log(pickedDate)
+
 
    this.setState({yearWeek: pickedDate},  this.getData)
+}
+
+onBtnExport = () => {
+  this.gridApi.selectAll();
+  const selectGridText = this.gridApi.exportDataAsCsv();
+  console.log(selectGridText);
 }
 
 
@@ -237,7 +242,7 @@ pickerHandler= (date)=> {
 					</Col>
 				</div>
 
-
+      
 
         <AgGridReact
           onGridReady={params => (this.gridApi = params.api)}
@@ -247,12 +252,10 @@ pickerHandler= (date)=> {
           animateRows={this.state.animateRows}
           rowHeight={this.state.rowHeight}
         ></AgGridReact>
+
         
-        <ButtonGroup size="sm" className="mb-2">
-        <Button className="ex btn-circle" /* onClick={this.onExportButtonClick} */>
-								Export to MyChart     
-        </Button>
-        </ButtonGroup>
+        <Button className="btn-circle" onClick={this.onBtnExport}>     Export Medical Records</Button>
+        
       
       </div>
     );

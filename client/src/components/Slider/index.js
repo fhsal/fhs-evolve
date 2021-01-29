@@ -28,7 +28,6 @@ export default function ContinuousSlider() {
       <Grid container spacing={2}>
         <Grid item xs>
           <Slider value={value} onChange={handleChange} aria-labelledby="continuous-slider" />
-          {console.log (value)}
         </Grid>
       </Grid>
     </div>
