@@ -4,7 +4,7 @@ import Landing from "./pages/Landing";
 import Physical from "./pages/Physical";
 import Mental from "./pages/Mental";
 import Resources from "./pages/Resources";
-import NavBar from "./components/Navbar";
+import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
 import Podcast from "./pages/Podcast";
