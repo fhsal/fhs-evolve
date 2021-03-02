@@ -1,14 +1,13 @@
 import axios from "axios";
 
 export default {
-  getQuote: function() {
-    return axios.get("https://type.fit/api/quotes");
-  },
-
-    // Saves a week of Health information to the database
-    saveHealth: function(healthData) {
-      return axios.post("/api/health", healthData);
-    }
-
-  
-};
+  getQuote: () =>
+  axios({
+      'method':'GET',
+      'url':'https://quotable-quotes.p.rapidapi.com/randomQuotes',
+      'headers': {
+          'x-rapidapi-host':'quotable-quotes.p.rapidapi.com',
+          'x-rapidapi-key': process.env.REACT_APP_API_KEY
+      },
+  })
+}
