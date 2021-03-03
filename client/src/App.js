@@ -16,9 +16,11 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import MyAccount from "./pages/MyAccount";
 
+require('dotenv').config()
 
+const { REACT_APP_API_KEY } = process.env
 
-
+console.log('from App.js ' + REACT_APP_API_KEY)
 
 function App() {
   return (

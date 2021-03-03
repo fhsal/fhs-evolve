@@ -13,18 +13,20 @@ class RandomQuote extends Component {
 	}
   
 	apiReq = () => {
-	  API.getQuote().then((response) => {
-		  const randNum = Math.floor(Math.random() * response.data.length)
-		  const quote = response.data[randNum].text
-		  const author = response.data[randNum].author
-		  console.log(quote)
-		  this.setState({
-			  quote: quote,
-			  author: author
+		API.getQuote().then((response) => {
+			//   const randNum = Math.floor(Math.random() * response.data.length)
+			//   const quote = response.data[randNum].text
+			//   const author = response.data[randNum].author
+			let zz = response
+			localStorage.quote = JSON.stringify(zz)
+			  console.log(response)
+			  this.setState({
+				  quote: response.data.quote,
+				  author: response.data.author
+			  });
+			  
 		  });
-		  
-	  });
-	}
+		}
 	componentDidMount() {
 	  this.apiReq()
 	}
