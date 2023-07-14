@@ -14,15 +14,13 @@ class RandomQuote extends Component {
   
 	apiReq = () => {
 		API.getQuote().then((response) => {
-			const randNum = Math.floor(Math.random() * response.data.length)
-			const quote = response.data[randNum].text
-			const author = response.data[randNum].author
+			let randNum = Math.floor(Math.random() * response.data.length)
 			let zz = response
 			localStorage.quote = JSON.stringify(zz)
 			  console.log(response)
 			  this.setState({
-				  quote: response.data.quote,
-				  author: response.data.author
+				  quote: response.data[randNum].text,
+				  author: response.data[randNum].author
 			  });
 			  
 		  });
