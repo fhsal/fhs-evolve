@@ -7,4 +7,4 @@ console.log(apiKey)
 export default {
     getQuote: function() {
         return axios.get("https://zenquotes.io/api/random");
-        },
+        }}
