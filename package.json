@@ -5,7 +5,7 @@
   "description": "",
   "main": "server.js",
   "engines": {
-    "node": "18.x",
+    "node": "<17",
     "npm": "8.0.0"},
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
