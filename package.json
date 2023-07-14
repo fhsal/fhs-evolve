@@ -9,6 +9,17 @@
 }
 
 {
+  "name": "example-app",
+  "description": "a really cool app",
+  "version": "1.0.0",
+  "engines": {
+    "node": "18.x",
+    "npm": “8.0.0”
+  }
+
+}
+
+{
   "name": "mern",
   "version": "1.0.0",
   "description": "",
