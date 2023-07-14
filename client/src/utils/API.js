@@ -1,16 +1,9 @@
 import axios from "axios";
 
+export default {
+  getQuote: function() {
+    return axios.get("https://type.fit/api/quotes");
+  },
 
-const apiKey = process.env.REACT_APP_API_KEY
-
-
-      export default {
-        getQuote: function() {
-          axios("https://zenquotes.io?api=random", {
-            method: 'GET',
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
-                mode: 'no-cors',
-              }})
-        }}
+  
+};
