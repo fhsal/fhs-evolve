@@ -10,7 +10,7 @@ const apiKey = process.env.REACT_APP_API_KEY
             method: 'GET',
             headers: {
                 'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json,
+                'Content-Type': 'application/json',
                 mode: 'no-cors',
               }})
         }}
