@@ -11,7 +11,7 @@ class RandomQuote extends Component {
 	  quote: "",
 	  author: "",
 	}
-  
+	
 	apiReq = () => {
 		API.getQuote().then((response) => {
 			let randNum = Math.floor(Math.random() * response.data.length)
@@ -19,6 +19,7 @@ class RandomQuote extends Component {
 			localStorage.quote = JSON.stringify(zz)
 			  console.log(response)
 			  console.log(response.data[randNum].author.split(","))
+			  console.log(response.data[randNum].author.split(","))[0]
 			  this.setState({
 				  quote: response.data[randNum].text,
 				  author: response.data[randNum].author
