@@ -22,7 +22,7 @@ class RandomQuote extends Component {
 			  console.log(response.data[randNum].author.split(",")[0])
 			  this.setState({
 				  quote: response.data[randNum].text,
-				  author: response.data[randNum].author
+				  author: response.data[randNum].author.split(",")[0]
 			  });
 			  
 		  });
