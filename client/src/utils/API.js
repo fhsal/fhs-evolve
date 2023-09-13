@@ -1,19 +1,18 @@
 import axios from "axios";
 
-
-const apiKey = process.env.REACT_APP_API_KEY
-console.log(apiKey)
-
 export default {
-  getQuote: () =>
-  axios({
-      'method':'GET',
-      'url': 'https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote',
-      'params': {
-      'token': 'ipworld.info'},
-      'headers': {
-          'x-rapidapi-host':'quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com',
-          'x-rapidapi-key': process.env.REACT_APP_API_KEY
-      },
-    )
-}
+  getQuote: function() {
+    return axios.get("https://type.fit/api/quotes");
+  },
+
+    // Saves a week of Health information to the database
+    saveHealth: function(healthData) {
+      return axios.post("/api/health", healthData);
+    }
+
+  
+};
+      
+
+
+ 

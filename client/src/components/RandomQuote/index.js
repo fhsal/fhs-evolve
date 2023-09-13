@@ -20,9 +20,11 @@ class RandomQuote extends Component {
 			let zz = response
 			localStorage.quote = JSON.stringify(zz)
 			  console.log(response)
+			  console.log(response.data.author.split(","))
 			  this.setState({
 				  quote: response.data.quote,
-				  author: response.data.author
+				  author: response.data.author,
+			
 			  });
 			  
 		  });
